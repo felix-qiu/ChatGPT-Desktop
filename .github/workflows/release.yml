@@ -29,7 +29,7 @@ jobs:
         id: create_release
         run: npx changelogithub --draft --name ChatGPT-Desktop-${{ steps.vars.outputs.tag }}
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build-app:
     needs: create-release
@@ -78,7 +78,7 @@ jobs:
       - name: Build the app
         uses: tauri-apps/tauri-action@v0
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAURI_PRIVATE_KEY: dW50cnVzdGVkIGNvbW1lbnQ6IHJzaWduIGVuY3J5cHRlZCBzZWNyZXQga2V5ClJXUlRZMEl5RER3dnpiQmNqQlB3N3ZZaWNoa3JTZEtMejUrKytSeVVpbmMyY3dDZlU3Z0FBQkFBQUFBQUFBQUFBQUlBQUFBQTduUXdhVzNuei9ZNVJnVEhOUFBvS1MxMUZvcFA1L1ByM3ZETWppVnFINUoxWjREMWZCMXVyd3BiRlNrWnR6ZEZWTUpGbkUyYWRCZFMzNzhTNUV6TTNlVlFCTkk3amxMVytkS0pkSVhWcHluVnhyYjMxelJRNlBlV210dk5zd01tYW80N3c4VFBtMmM9Cg==
           TAURI_KEY_PASSWORD: 123456
         with:
